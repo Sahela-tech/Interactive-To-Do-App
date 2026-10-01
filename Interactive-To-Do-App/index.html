@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive To-Do List</title>
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- External Custom CSS File -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 min-h-screen flex items-center justify-center p-4">
+
+  <div class="bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl w-full max-w-md p-6 border border-white/20">
+    <!-- Header -->
+    <div class="flex justify-between items-center mb-6">
+      <div>
+        <h1 class="text-2xl font-bold text-gray-800">My Tasks 📝</h1>
+        <p class="text-xs text-gray-500" id="current-date"></p>
+      </div>
+      <span id="pending-count" class="bg-indigo-100 text-indigo-700 text-xs font-semibold px-3 py-1 rounded-full">
+        0 Tasks
+      </span>
+    </div>
+
+    <!-- Task Input Form -->
+    <form id="todo-form" class="flex gap-2 mb-6">
+      <input 
+        type="text" 
+        id="todo-input" 
+        placeholder="Add a new task..." 
+        class="flex-1 px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition text-sm text-gray-700"
+        required
+      />
+      <button 
+        type="submit" 
+        class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-5 py-3 rounded-xl transition shadow-lg shadow-indigo-500/30"
+      >
+        Add
+      </button>
+    </form>
+
+    <!-- Filter Buttons -->
+    <div class="flex gap-2 mb-4 text-xs font-medium">
+      <button onclick="filterTasks('all')" class="filter-btn active-filter px-3 py-1.5 rounded-lg bg-indigo-600 text-white">All</button>
+      <button onclick="filterTasks('pending')" class="filter-btn px-3 py-1.5 rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200">Pending</button>
+      <button onclick="filterTasks('completed')" class="filter-btn px-3 py-1.5 rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200">Completed</button>
+    </div>
+
+    <!-- Task List -->
+    <ul id="todo-list" class="space-y-2 max-h-80 overflow-y-auto pr-1">
+      <!-- Tasks dynamically generated here -->
+    </ul>
+
+    <!-- Footer Stats -->
+    <div class="mt-6 pt-4 border-t border-gray-100 flex justify-between items-center text-xs text-gray-400">
+      <span id="completed-stats">0 completed</span>
+      <button id="clear-btn" onclick="clearCompleted()" class="hover:text-red-500 transition">Clear Completed</button>
+    </div>
+  </div>
+
+  <!-- External JavaScript File -->
+  <script src="script.js"></script>
+</body>
+</html>
